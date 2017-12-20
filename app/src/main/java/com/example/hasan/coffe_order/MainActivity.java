@@ -1,5 +1,5 @@
 /**
- * IMPORTANT: Make sure you are using the correct package name. 
+ * IMPORTANT: Make sure you are using the correct package name.
  * This example uses the package name:
  * package com.example.android.justjava
  * If you get an error when copying this code into Android studio, update it to match teh package name found
@@ -21,7 +21,7 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
-    int valueIncrement=0;
+    int valueIncrement = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int priceForOne = 30;
-
-        displayPrice(priceForOne * valueIncrement);
+        displayMessage((valueIncrement * 8)+ " dollars for "+valueIncrement+" cups of coffee.Pay up.");
     }
 
     /**
@@ -43,31 +41,30 @@ public class MainActivity extends AppCompatActivity {
      */
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.noforders);
-        quantityTextView.setText(""+number);
+        quantityTextView.setText("" + number);
     }
 
     // Increment method for adding number of coffees
 
-    public void increment(View view){
+    public void increment(View view) {
 
-        valueIncrement+=1;
+        valueIncrement += 1;
         display(valueIncrement);
 
     }
 
     // Decrement method for adding number of coffees
 
-    public void decrement(View view){
+    public void decrement(View view) {
 
-        if (valueIncrement>0){
-        valueIncrement-=1;
-        display(valueIncrement);
-        }else{
+        if (valueIncrement > 0) {
+            valueIncrement -= 1;
+            display(valueIncrement);
+        } else {
             display(0);
         }
 
     }
-
 
 
     /**
@@ -76,5 +73,14 @@ public class MainActivity extends AppCompatActivity {
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    }
+
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price);
+        priceTextView.setText(message);
     }
 }
